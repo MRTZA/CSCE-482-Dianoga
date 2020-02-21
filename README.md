@@ -16,24 +16,20 @@ These instructions will get you a copy of the project up and running on your loc
 machine for development and testing purposes. See deployment for notes on how to 
 deploy the project on a live system. 
 
-Step 0: If installing to conda env, update the environment.yml with the command below
+Step 1: Build Docker image (while in the repo directory)
 
-`conda env export > environment.yml`
+`docker build -t capstone:v0.1 .`
 
-*make sure to delete the "prefix" line at the bottom of the yml after exporting\*
+Step 2: Run the container (fill in the absolute path to your repo)
 
-Step 1: Set up Conda env
-
-`conda env create -f environment.yml`
-
-Step 2: Activate Conda env
-
-`conda activate capstone`
+`docker run --name capstone -it -v "/path/to/repo/":"/CSCE-482/" capstone:v0.1`
 
 Step 3(i): If running `detect.py` update the parameters in the file and use the 
 command below
 
-`python3 detect.py`
+`conda actiavte capstone` - you should see something like this `(capstone) root@01f1f79e0b32:/CSCE-482#`
+
+Next `cd /CSCE-482/` and `python3 detect.py` to run
 
 Step 4(i): If training...
 
