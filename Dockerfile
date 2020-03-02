@@ -8,6 +8,7 @@ RUN apt-get update && \
 SHELL ["conda", "run", "-n", "capstone", "/bin/bash", "-c"]
 
 # Install libraries to environment:
-RUN conda install -y -c conda-forge tensorflow=1.5.0 keras=2.2.4 opencv=3.4.2 && \
-    conda install -y -c powerai imageai
+RUN conda install -y -c conda-forge keras=2.2.4 opencv=4.2 && \
+    conda install -y -c anaconda tensorflow-gpu=1.4 cudnn=6.0.21 cudatoolkit=8.0 && \
+    conda install -y -c powerai imageai=2.1.5
 
