@@ -3,3 +3,4 @@
 .empty
 ./trashnet/logs/
 ./trashnet/models/
+.vscode/
