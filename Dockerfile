@@ -18,4 +18,4 @@ COPY ./ /CSCE482/
 
 # Start the app
 EXPOSE 8000
-WORKDIR /CSCE482/app
+WORKDIR /CSCE482/trash_handler
