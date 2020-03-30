@@ -4,3 +4,4 @@
 ./trashnet/logs/
 ./trashnet/models/
 .vscode/
+__pycache__/

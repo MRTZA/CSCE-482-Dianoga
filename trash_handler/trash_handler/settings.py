@@ -25,12 +25,13 @@ SECRET_KEY = 'tvdbycq9ccgu!p0jyhb!u0ft*)ab7^qz8do&8pz8d$f_31$u(2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.86.73']
+ALLOWED_HOSTS = ['localhost', '192.168.86.73']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'dianoga_app.apps.DianogaAppConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

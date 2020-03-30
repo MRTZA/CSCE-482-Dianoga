@@ -1,0 +1,15 @@
+{% extends 'dianoga_app/home.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h1 class="text-left">Data Collection</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="fileField">Image File</label>
+            <input class="form-control-file" id="fileField" type="file" name="" />
+        </div>
+        <button type="submit">Upload</button>
+    </form>
+{% endblock %}
