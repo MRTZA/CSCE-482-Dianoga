@@ -1,15 +1,15 @@
-{% extends 'dianoga_app/home.html' %}
+{% extends 'dianoga_app/base.html' %}
 
 {% load static %}
 
 {% block content %}
-    <h1 class="text-left">Data Collection</h1>
+    <div cont>
 
-    <form method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="fileField">Image File</label>
-            <input class="form-control-file" id="fileField" type="file" name="" />
-        </div>
-        <button type="submit">Upload</button>
-    </form>
+        <form method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            {{form.as_p }}
+            <input type="submit" class="btn btn-outline-success">
+        </form>
+
+    </div>
 {% endblock %}

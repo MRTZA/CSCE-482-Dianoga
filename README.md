@@ -111,6 +111,14 @@ datasite/asgi.py is an entry-point for ASGI-compatible web servers to serve the 
 
 datasite/wsgi.py is an entry-point for WSGI-compatible web servers to serve the project.
 
+### Build
+In order to build the code (if not working) delete the db.sqlite3 file
+```bash
+python manage.py makemigrations
+
+python manage.py migrate --run-syncdb
+```
+
 ### Run
 In order to run, the project redirect into the root datasite folder and type the following command.
 ```bash
