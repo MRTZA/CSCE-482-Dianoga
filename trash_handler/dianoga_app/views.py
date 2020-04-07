@@ -21,7 +21,7 @@ def data_collection(request):
             messages.success(request, 'Success - Thank You, Please Upload More!')
             return HttpResponseRedirect('data_collection')
         else:
-            messages.error(request, 'Error - Please Upload a .jpg File')
+            messages.error(request, 'Error - Please Upload an Image File')
             return HttpResponseRedirect('data_collection')
     else:
         context = {}
