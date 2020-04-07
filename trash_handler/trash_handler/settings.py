@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['localhost', '192.168.86.73']
 # Application definition
 
 INSTALLED_APPS = [
-    'dianoga_app.apps.DianogaAppConfig',
+    'dianoga_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -119,6 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

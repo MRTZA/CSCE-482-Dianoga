@@ -1,0 +1,35 @@
+body {
+    background-color: #C0C0C0;
+}
+.navbar-dark {
+    background-color: #500000;
+}
+figure {
+    display: inline-block;
+    border: 1px dotted gray;
+    margin: 10px; /* adjust as needed */
+}
+figure img {
+    vertical-align: top;
+}
+figure figcaption {
+    border: 1px dotted gray;
+    text-align: center;
+}
+.flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.cust_header5 {
+    text-align: center;
+}
+.progress_bar {
+    display: inline
+}
+.error {
+    color: red;
+}
+.success {
+    color: green;
+}

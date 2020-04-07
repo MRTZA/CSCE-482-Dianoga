@@ -1,7 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib import messages
 from .forms import UploadFileForm
-
+import os, os.path
 
 # Create your views here.
 def home(request):
@@ -17,10 +18,47 @@ def data_collection(request):
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('success')
+            messages.success(request, 'Success - Thank You, Please Upload More!')
+            return HttpResponseRedirect('data_collection')
+        else:
+            messages.error(request, 'Error - Please Upload a .jpg File')
+            return HttpResponseRedirect('data_collection')
     else:
+        context = {}
         form = UploadFileForm()
-    return render(request, 'dianoga_app/data_collection.html', {'form': form})
+        context['form'] = form
 
-def success(request):
-    return render(request,'dianoga_app/success.html')
+        # get example images
+        examples = {}
+        examples_path = "example/"
+        for root, dirs, files in os.walk(os.getcwd() + '/dianoga_app/static/' + examples_path):
+            for filename in files:
+                examples[examples_path + filename] = filename.split(".jpg")[0]
+        context['examples'] = examples
+
+        # get progress bar info
+        max_data = 800
+        context['max_data'] = max_data
+
+        train_path = "../trashnet/train/"
+        test_path = "../trashnet/test/"
+        collection_path = "media/img/"
+
+        materials = next(os.walk(train_path))[1]
+        progress = {}
+
+        for m in materials:
+            DIR = os.path.join(train_path, m)
+            train_num = len([name for name in os.listdir(DIR) if os.path.isfile(os.path.join(DIR, name))])
+
+            DIR = os.path.join(test_path, m)
+            test_num = len([name for name in os.listdir(DIR) if os.path.isfile(os.path.join(DIR, name))])
+
+            DIR = os.path.join(collection_path, m)
+            collected = len([name for name in os.listdir(DIR) if os.path.isfile(os.path.join(DIR, name))])
+
+            progress[m] = (train_num + collected + test_num)
+
+        context['progress'] = progress
+
+    return render(request, 'dianoga_app/data_collection.html', context)

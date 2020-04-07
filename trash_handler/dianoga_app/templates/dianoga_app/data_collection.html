@@ -3,13 +3,33 @@
 {% load static %}
 
 {% block content %}
-    <div cont>
+    <br><h5 class="cust_header5">Progress Towards Goals</h5><br>
+    <div class="flexbox">
+        <div>
+            <form method="post" enctype="multipart/form-data">
+                {%csrf_token%}
+                {{form.as_p }}
+                <input type="submit" class="btn btn-outline-success">
+            </form>
 
-        <form method="post" enctype="multipart/form-data">
-            {%csrf_token%}
-            {{form.as_p }}
-            <input type="submit" class="btn btn-outline-success">
-        </form>
+            {% if messages %}
+                {% for message in messages %}
+                    {% include 'dianoga_app/message.html' with message=message %}
+                {% endfor %}
+            {% endif %}
+        </div>
 
+        <div>
+            {% for material, progress in progress.items %}
+                {% include 'dianoga_app/progress_bar.html' with material=material progress=progress max_data=max_data %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <br><h5 class="cust_header5">Example Images</h5>
+    <div class="flexbox">
+        {% for filename, material in examples.items %}
+            {% include 'dianoga_app/example_image.html' with filename=filename material=material %}
+        {% endfor %}
     </div>
 {% endblock %}
