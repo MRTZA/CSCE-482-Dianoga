@@ -120,7 +120,7 @@ python manage.py migrate --run-syncdb
 ```
 
 ### Run
-In order to run, the project redirect into the root datasite folder and type the following command.
+In order to run, the project redirect into the root trash_handler folder and type the following command.
 ```bash
 python manage.py runserver
 ```
@@ -132,7 +132,9 @@ python manage.py runserver 0.0.0.0:<port>
 
 ## Running the tests
 
-TODO
+```bash
+curl -v -F "file=@/path/to/image.jpg/" capstone.murtazahakimi.com/predict/
+```
 
 ## Deployment
 
